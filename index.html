@@ -257,6 +257,12 @@
             <button onclick="togglePerformance()" id="perfBtn" aria-label="Modo Rendimiento" class="p-2 rounded-full bg-slate-800 hover:bg-slate-700 text-gray-400 hover:text-green-400 transition-all duration-300 shadow-lg border border-slate-700 click-sfx group relative">
                 <i class="fas fa-bolt"></i>
                 <span class="absolute right-0 top-full mt-2 w-max bg-black text-xs text-white px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">Modo Rendimiento</span>
+                
+                <!-- Performance Reminder Tooltip -->
+                <div id="perfReminder" class="absolute right-full mr-3 top-1/2 -translate-y-1/2 w-max bg-cyan-600 text-white font-bold text-xs px-3 py-2 rounded-lg shadow-[0_0_15px_rgba(8,145,178,0.6)] opacity-0 pointer-events-none transition-all duration-500 translate-x-4">
+                    Sientes lenta la pagina cliquéame 👉
+                    <div class="absolute top-1/2 -right-1.5 -translate-y-1/2 border-t-[6px] border-t-transparent border-b-[6px] border-b-transparent border-l-[6px] border-l-cyan-600"></div>
+                </div>
             </button>
 
             <!-- Share Button -->
@@ -285,8 +291,7 @@
         <div class="flex flex-wrap justify-center gap-4">
             <div class="relative group">
                 <div id="tiktokPanel" class="hidden absolute bottom-full left-0 mb-2 w-full bg-slate-800 rounded-lg shadow-xl overflow-hidden border border-slate-700 z-50 transform origin-bottom transition-all duration-200">
-                    <a href="https://www.tiktok.com/@ajk.al" target="_blank" rel="noopener noreferrer" class="block px-4 py-3 hover:bg-slate-700 text-sm transition-colors border-b border-slate-700/50 click-sfx">🇨🇴 CO AJ</a>
-                    <a href="https://www.tiktok.com/@soyy_aj" target="_blank" rel="noopener noreferrer" class="block px-4 py-3 hover:bg-slate-700 text-sm transition-colors border-b border-slate-700/50 click-sfx">🇺🇸 AJ USA</a>
+                    <a href="https://www.tiktok.com/@ajk.al" target="_blank" rel="noopener noreferrer" class="block px-4 py-3 hover:bg-slate-700 text-sm transition-colors border-b border-slate-700/50 click-sfx">AJ</a>
                     <a href="https://www.tiktok.com/@aj.jugando" target="_blank" rel="noopener noreferrer" class="block px-4 py-3 hover:bg-slate-700 text-sm transition-colors click-sfx">🎮 AJ Gaming</a>
                 </div>
                 <button onclick="toggleTikTok()" aria-haspopup="true" aria-expanded="false" class="flex items-center gap-2 bg-black hover:bg-[#252525] text-white px-6 py-3 rounded-xl transition-all duration-300 shadow-lg border border-gray-800 relative z-10 click-sfx">
@@ -769,28 +774,7 @@
         </div>
     </div>
 
-    <!-- MODALS (Easter Egg, Video, PayPal, Nequi, About) -->
-    
-    <div id="giftModal" role="dialog" aria-modal="true" aria-labelledby="giftTitle" class="fixed inset-0 z-[110] hidden items-center justify-center bg-black/90 backdrop-blur-md p-4">
-        <div class="glass-panel w-full max-w-md p-8 rounded-2xl relative shadow-[0_0_50px_rgba(255,0,0,0.5)] border-2 border-red-500 transform scale-95 transition-all">
-            <button onclick="closeModal('giftModal')" class="absolute top-2 right-4 text-gray-400 hover:text-white text-2xl click-sfx">&times;</button>
-            <div class="text-center">
-                <i class="fas fa-gift text-6xl text-red-500 mb-4 animate-bounce"></i>
-                <h3 id="giftTitle" class="text-3xl font-gaming font-bold text-white mb-2">¡REGALO SECRETO!</h3>
-                <p class="text-gray-300 mb-6 text-sm">Por ser curioso y paciente, aquí tienes tu recompensa:</p>
-                <div class="bg-slate-900 p-4 rounded-xl border border-slate-700 mb-4">
-                    <p class="text-green-400 font-bold mb-1">Xbox Game Pass Ultimate (1 Mes)</p>
-                    <p class="font-mono text-xl text-white select-all bg-black/50 p-2 rounded">QDPM6-GC96K-QCF2Y-XTQMJ-2YTTZ</p>
-                    <p class="text-xs text-gray-500 mt-1">Región: Estados Unidos 🇺🇸</p>
-                </div>
-                <div class="text-left bg-red-900/20 border border-red-500/30 p-3 rounded-lg text-xs text-red-200">
-                    <p class="font-bold mb-1"><i class="fas fa-exclamation-triangle"></i> ADVERTENCIA:</p>
-                    <p>Este código es exclusivo para cuentas de EE.UU. Debes estar allí o usar VPN.</p>
-                </div>
-                <p class="mt-4 text-[10px] text-gray-500 italic">Este código desaparecerá el 1 de febrero para el nuevo código, recuerda que no estará en el mismo lugar.</p>
-            </div>
-        </div>
-    </div>
+    <!-- MODALS (Video, PayPal, Nequi, About) -->
     
     <div id="videoModal" role="dialog" aria-modal="true" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/80 backdrop-blur-sm p-4 transition-opacity">
         <div class="glass-panel w-full max-w-4xl rounded-2xl relative overflow-hidden shadow-2xl animate-blob" style="animation: none;">
@@ -1134,16 +1118,24 @@
             }, 800);
         });
 
-        // --- EASTER EGG ---
-        let eggTimer;
-        const mainTitle = document.getElementById('mainTitle');
-        function startEggTimer() { clearTimeout(eggTimer); eggTimer = setTimeout(() => showModal('giftModal'), 25000); }
-        function cancelEggTimer() { clearTimeout(eggTimer); }
-        mainTitle.addEventListener('mouseenter', startEggTimer); mainTitle.addEventListener('mouseleave', cancelEggTimer);
-        mainTitle.addEventListener('mousedown', startEggTimer); mainTitle.addEventListener('mouseup', cancelEggTimer);
-        mainTitle.addEventListener('touchstart', (e) => startEggTimer(), {passive: true}); mainTitle.addEventListener('touchend', cancelEggTimer);
-
         document.getElementById('year').textContent = new Date().getFullYear();
+        
+        // --- PERFORMANCE REMINDER (Cada 30s) ---
+        setInterval(() => {
+            if(!document.body.classList.contains('performance-mode')) {
+                const reminder = document.getElementById('perfReminder');
+                if(reminder) {
+                    reminder.classList.remove('opacity-0', 'translate-x-4');
+                    reminder.classList.add('opacity-100', 'translate-x-0', 'animate-bounce');
+                    
+                    // Ocultar de nuevo tras 6 segundos
+                    setTimeout(() => {
+                        reminder.classList.remove('opacity-100', 'translate-x-0', 'animate-bounce');
+                        reminder.classList.add('opacity-0', 'translate-x-4');
+                    }, 6000);
+                }
+            }
+        }, 30000);
         
         // --- 3D TILT ---
         let isTicking = false;
