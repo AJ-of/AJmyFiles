@@ -401,32 +401,6 @@
             </div>
         </section>
 
-        <!-- ACORTADOR SECTION -->
-        <section id="acortadorSection" class="glass-panel p-6 rounded-2xl relative overflow-hidden group z-0 reveal-on-scroll transition-all duration-300 mt-6">
-            <div class="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-yellow-500 rounded-full opacity-10 blur-2xl group-hover:opacity-20 transition-opacity"></div>
-            <h2 class="text-2xl font-gaming font-bold text-center text-yellow-400 mb-6 flex items-center justify-center gap-2">
-                <i class="fas fa-exclamation-triangle"></i> CÓMO PASAR EL ACORTADOR
-            </h2>
-            <div class="flex justify-center mb-6">
-                <button onclick="showVideoModal();" class="relative overflow-hidden bg-gradient-to-r from-yellow-600 to-orange-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transform transition hover:scale-105 hover:shadow-orange-500/30 click-sfx">
-                    <span class="relative z-10 flex items-center gap-2"><i class="fas fa-play-circle"></i> Ver Video Explicativo</span>
-                </button>
-            </div>
-            <div class="border border-slate-700 rounded-xl overflow-hidden bg-slate-900/50">
-                <button class="accordion-header w-full flex items-center justify-between p-4 bg-slate-800/50 hover:bg-slate-800 transition-colors text-left font-semibold text-gray-200 click-sfx" 
-                        aria-expanded="false" aria-controls="acc-shortener">
-                <!-- Card 3: Minecraft (Destacado Azul) -->
-                <div class="w-72 md:w-80 flex-shrink-0 glass-panel rounded-2xl p-4 relative overflow-hidden group tilt-card hover:bg-slate-800/80 transition-colors border border-slate-700">
-                    <div class="tilt-shine"></div>
-                    <div class="absolute top-2 right-2 bg-blue-600 text-[10px] font-bold px-2 py-0.5 rounded text-white shadow-lg flex items-center gap-1 z-10">HOT <i class="fas fa-fire text-yellow-300"></i></div>
-                    <div class="h-24 mb-3 rounded-lg bg-cover bg-center" style="background-image: url('Minecraft.png'); background-color: #064e3b;"></div>
-                    <h3 class="font-gaming text-lg md:text-xl font-bold text-white mb-1">Minecraft +FPS</h3>
-                    <p class="text-xs text-gray-400 mb-3 line-clamp-2">Cliente optimizado 1.21.5 y versiones anteriores. Java & Bedrock.</p>
-                    <button onclick="navigateTo('minecraft');" class="w-full bg-green-600/20 hover:bg-green-600 text-green-400 hover:text-white py-2 rounded-lg text-sm font-bold transition click-sfx">Descargar</button>
-                </div>
-            </div>
-        </section>
-
         <!-- LISTA DE JUEGOS (PC) -->
         <section id="gamesSection" class="reveal-on-scroll category-section">
             <div class="flex items-center gap-4 mb-6">
@@ -1294,14 +1268,12 @@
             const filter = input.value.toUpperCase();
             const items = document.querySelectorAll('.search-item');
             if (filter.length > 0) {
-                document.getElementById('acortadorSection').style.display = 'none';
                 document.getElementById('featuredSection').parentElement.style.display = 'none'; 
                 document.getElementById('gamesSection').style.display = 'block';
                 document.getElementById('androidSection').style.display = 'block';
                 document.getElementById('osSection').style.display = 'block';
                 document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active')); 
             } else {
-                document.getElementById('acortadorSection').style.display = 'block';
                 document.getElementById('featuredSection').parentElement.style.display = 'flex';
             }
             items.forEach(item => {
@@ -1357,20 +1329,19 @@
         document.addEventListener('DOMContentLoaded', () => {
              document.querySelectorAll('.dl-link').forEach(link => {
                 link.addEventListener('click', function(e) {
-                    e.preventDefault(); // Evita que se abra el link de inmediato
-                    currentDownloadUrl = this.href; // Guarda la URL del archivo
-                    showModal('shortenerModal'); // Abre el recuadro de advertencia
+                    e.preventDefault(); 
+                    currentDownloadUrl = this.href; 
+                    showModal('shortenerModal'); 
                 });
             });
 
-            // Lógica para el botón "Continuar" dentro del recuadro
             const btnContinue = document.getElementById('btnContinueDownload');
             if(btnContinue) {
                 btnContinue.addEventListener('click', () => {
                     if(currentDownloadUrl) {
-                        window.open(currentDownloadUrl, '_blank'); // Abre el acortador en otra pestaña
-                        closeModal('shortenerModal'); // Cierra el recuadro
-                        currentDownloadUrl = ""; // Reinicia la variable
+                        window.open(currentDownloadUrl, '_blank'); 
+                        closeModal('shortenerModal'); 
+                        currentDownloadUrl = ""; 
                     }
                 });
             }
