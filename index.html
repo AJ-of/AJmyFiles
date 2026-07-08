@@ -71,6 +71,7 @@
                         'pulse-fast': 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
                         'pop-in': 'popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards',
                         'sway': 'sway 3s ease-in-out infinite',
+                        'wiggle': 'wiggle 1s ease-in-out infinite'
                     },
                     keyframes: {
                         blob: {
@@ -90,6 +91,10 @@
                         sway: {
                             '0%, 100%': { transform: 'translateX(-5px)' },
                             '50%': { transform: 'translateX(5px)' }
+                        },
+                        wiggle: {
+                            '0%, 100%': { transform: 'rotate(-3deg)' },
+                            '50%': { transform: 'rotate(3deg)' }
                         }
                     }
                 }
@@ -115,17 +120,16 @@
         body.performance-mode .grid-bg,
         body.performance-mode .tilt-shine,
         body.performance-mode .snake-span, 
-        body.performance-mode .accordion-content {
+        body.performance-mode .accordion-content,
+        body.performance-mode #perfTooltip {
             display: none !important;
-            /* For accordion, keep functionality but remove sliding animation via transition: none above */
         }
         
         body.performance-mode .glass-panel {
             backdrop-filter: none;
-            background: #1e293b; /* Solid color fallback */
+            background: #1e293b; 
         }
         
-        /* Fix visibility of accordion content in performance mode */
         body.performance-mode .accordion-content {
             display: block !important;
             height: auto !important;
@@ -135,7 +139,6 @@
         body.performance-mode .accordion-header[aria-expanded="true"] + .accordion-content {
             max-height: none !important;
         }
-
 
         /* Scroll Progress */
         #scrollProgress { box-shadow: 0 0 10px rgba(56, 189, 248, 0.7); }
@@ -234,9 +237,7 @@
 
     <!-- Backgrounds -->
     <div class="grid-bg"></div>
-    <!-- CURSOR TRAIL CANVAS -->
     <canvas id="trailCanvas"></canvas>
-    <!-- PARTICLE BACKGROUND CANVAS -->
     <canvas id="particleCanvas"></canvas>
 
     <!-- FPS Counter -->
@@ -251,19 +252,21 @@
 
     <!-- Header -->
     <header class="w-full pt-16 pb-8 px-4 text-center relative z-10 max-w-4xl mx-auto reveal-on-scroll visible">
-        <div class="absolute top-6 right-6 lg:right-auto lg:left-[calc(50%+250px)] flex gap-3">
+        <div class="absolute top-6 right-6 lg:right-auto lg:left-[calc(50%+250px)] flex gap-3 items-center">
             
-            <!-- Performance Toggle Button -->
-            <button onclick="togglePerformance()" id="perfBtn" aria-label="Modo Rendimiento" class="p-2 rounded-full bg-slate-800 hover:bg-slate-700 text-gray-400 hover:text-green-400 transition-all duration-300 shadow-lg border border-slate-700 click-sfx group relative">
-                <i class="fas fa-bolt"></i>
-                <span class="absolute right-0 top-full mt-2 w-max bg-black text-xs text-white px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">Modo Rendimiento</span>
-                
-                <!-- Performance Reminder Tooltip -->
-                <div id="perfReminder" class="absolute right-full mr-3 top-1/2 -translate-y-1/2 w-max bg-cyan-600 text-white font-bold text-xs px-3 py-2 rounded-lg shadow-[0_0_15px_rgba(8,145,178,0.6)] opacity-0 pointer-events-none transition-all duration-500 translate-x-4">
+            <!-- Performance Group (Button + Tooltip) -->
+            <div class="relative flex items-center">
+                <!-- Tooltip a la Izquierda -->
+                <div id="perfTooltip" class="absolute right-full mr-3 whitespace-nowrap bg-cyan-600/90 backdrop-blur text-white text-[11px] md:text-xs font-bold px-3 py-2 rounded-lg shadow-[0_0_15px_rgba(8,145,178,0.6)] opacity-0 pointer-events-none transition-all duration-500 translate-x-4 flex items-center gap-2 border border-cyan-400">
                     Sientes lenta la pagina cliquéame 👉
-                    <div class="absolute top-1/2 -right-1.5 -translate-y-1/2 border-t-[6px] border-t-transparent border-b-[6px] border-b-transparent border-l-[6px] border-l-cyan-600"></div>
                 </div>
-            </button>
+                
+                <!-- Botón de Rendimiento -->
+                <button onclick="togglePerformance()" id="perfBtn" aria-label="Modo Rendimiento" class="p-2 rounded-full bg-slate-800 hover:bg-slate-700 text-gray-400 hover:text-green-400 transition-all duration-300 shadow-lg border border-slate-700 click-sfx group relative">
+                    <i class="fas fa-bolt"></i>
+                    <span class="absolute right-0 top-full mt-2 w-max bg-black text-xs text-white px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">Modo Rendimiento</span>
+                </button>
+            </div>
 
             <!-- Share Button -->
             <button onclick="shareWeb()" aria-label="Compartir Web" class="p-2 rounded-full bg-slate-800 hover:bg-slate-700 text-blue-400 transition-all duration-300 shadow-lg border border-slate-700 group relative click-sfx">
@@ -300,7 +303,10 @@
             </div>
             <a href="https://www.youtube.com/@Oficial-AJ" target="_blank" rel="noopener noreferrer" class="social-btn bg-[#ff0000] hover:bg-[#cc0000] text-white px-6 py-3 rounded-xl shadow-lg flex items-center gap-2 font-semibold transition hover:-translate-y-1 click-sfx"><i class="fab fa-youtube"></i> YouTube</a>
             <a href="https://discord.com/invite/v6sXsaHhpu" target="_blank" rel="noopener noreferrer" class="social-btn bg-[#5865F2] hover:bg-[#4752c4] text-white px-6 py-3 rounded-xl shadow-lg flex items-center gap-2 font-semibold transition hover:-translate-y-1 click-sfx"><i class="fab fa-discord"></i> Discord</a>
-            <a href="https://www.whatsapp.com/channel/0029Vb78y6d6GcGLSt1Xw834" target="_blank" rel="noopener noreferrer" class="social-btn bg-[#25D366] hover:bg-[#128C7E] text-white px-6 py-3 rounded-xl shadow-lg flex items-center gap-2 font-semibold transition hover:-translate-y-1 click-sfx"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            <a href="https://chat.whatsapp.com/EqlXLNNY9GNHDvExWnuk2C" target="_blank" rel="noopener noreferrer" class="social-btn bg-[#25D366] hover:bg-[#128C7E] text-white px-6 py-3 rounded-xl shadow-lg flex items-center gap-2 font-semibold transition hover:-translate-y-1 click-sfx">
+                <i class="fab fa-whatsapp"></i> WhatsApp 
+                <span class="ml-1 px-1.5 py-0.5 text-[9px] font-bold bg-white text-green-600 rounded animate-pulse uppercase shadow-md">Nuevo</span>
+            </a>
         </div>
     </div>
 
@@ -325,28 +331,68 @@
             </div>
         </div>
 
-        <!-- FEATURED CAROUSEL -->
+        <!-- FEATURED SECTION (NUEVO DISEÑO) -->
         <section class="reveal-on-scroll w-full flex flex-col items-center">
-            <h2 class="w-full text-center text-3xl font-gaming font-bold text-white mb-6 animate-pulse drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]">
+            <h2 class="w-full text-center text-3xl font-gaming font-bold text-white mb-2 animate-pulse drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]">
                 <i class="fas fa-star text-yellow-400 mr-2"></i> ÚLTIMOS ARCHIVOS
             </h2>
-            <div id="featuredSection" class="w-full flex justify-center gap-6 overflow-x-auto py-4 px-4 scrollbar-hide flex-wrap md:flex-nowrap">
-                <!-- Card 1: Fortnite (Destacado) -->
-                <div class="w-72 md:w-80 flex-shrink-0 glass-panel rounded-2xl p-4 relative overflow-hidden group tilt-card hover:bg-slate-800/80 transition-colors rgb-border">
-                    <div class="tilt-shine"></div>
-                    <div class="absolute top-2 right-2 bg-red-600 text-[10px] font-bold px-2 py-1 rounded text-white shadow-lg flex items-center gap-1 animate-pulse">
-                        ÚLTIMO PUBLICADO <span class="bg-white text-red-600 px-1 rounded ml-1">HOT</span> <i class="fas fa-fire text-yellow-300"></i>
+
+            <!-- Separador: Modificaciones -->
+            <div class="w-full flex items-center gap-4 mb-4 mt-2 opacity-80">
+                <div class="h-px bg-slate-700 flex-1"></div>
+                <span class="text-sm font-gaming font-bold text-slate-400 tracking-wider uppercase">Modificaciones</span>
+                <div class="h-px bg-slate-700 flex-1"></div>
+            </div>
+
+            <!-- Tarjeta Rectangular de Samsung -->
+            <div onclick="navigateTo('samsung-opti');" class="w-full max-w-2xl mx-auto glass-panel rounded-xl p-4 relative overflow-hidden group hover:bg-slate-800/80 transition-colors rgb-border mb-6 flex flex-col sm:flex-row items-center justify-between gap-4 cursor-pointer">
+                <div class="tilt-shine"></div>
+                <div class="flex items-center gap-4 z-10 relative w-full">
+                    <!-- Icono -->
+                    <div class="w-14 h-14 rounded-lg bg-slate-900 border border-slate-700 flex items-center justify-center text-pink-500 text-2xl flex-shrink-0 relative overflow-hidden">
+                        <div class="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
+                        <i class="fas fa-mobile-alt relative z-10"><i class="fas fa-rocket absolute -bottom-1 -right-3 text-sm text-cyan-400"></i></i>
                     </div>
+                    <!-- Textos -->
+                    <div class="text-left flex-1">
+                        <h3 class="font-gaming text-lg sm:text-xl font-bold text-white leading-tight flex items-center flex-wrap gap-2 mb-1">
+                            Opti Samsung Universal
+                            <span class="bg-red-600 text-[10px] font-bold px-2 py-0.5 rounded text-white shadow-lg animate-pulse whitespace-nowrap flex items-center gap-1">
+                                ÚLTIMO PUBLICADO <span class="bg-white text-red-600 px-1 rounded">HOT</span> <i class="fas fa-fire text-yellow-300"></i>
+                            </span>
+                        </h3>
+                        <p class="text-xs text-gray-400 line-clamp-2">Elimina bloatware, baja temperatura y mejora duración de batería.</p>
+                    </div>
+                </div>
+                <!-- Flecha derecha -->
+                <div class="z-10 relative hidden sm:block">
+                    <button class="bg-pink-600/20 group-hover:bg-pink-600 text-pink-400 group-hover:text-white px-4 py-2 rounded-lg text-sm font-bold transition">Ver</button>
+                </div>
+            </div>
+
+            <!-- Separador: Juegos Optimizados -->
+            <div class="w-full flex items-center gap-4 mb-6 opacity-80">
+                <div class="h-px bg-slate-700 flex-1"></div>
+                <span class="text-sm font-gaming font-bold text-slate-400 tracking-wider uppercase">Juegos Optimizados</span>
+                <div class="h-px bg-slate-700 flex-1"></div>
+            </div>
+
+            <!-- Cuadros Originales (Juegos) -->
+            <div id="featuredSection" class="w-full flex justify-center gap-6 overflow-x-auto py-2 px-4 scrollbar-hide flex-wrap md:flex-nowrap">
+                <!-- Card 1: Fortnite -->
+                <div class="w-72 md:w-80 flex-shrink-0 glass-panel rounded-2xl p-4 relative overflow-hidden group tilt-card hover:bg-slate-800/80 transition-colors border border-slate-700">
+                    <div class="tilt-shine"></div>
+                    <div class="absolute top-2 right-2 bg-blue-600 text-[10px] font-bold px-2 py-0.5 rounded text-white shadow-lg flex items-center gap-1 z-10">HOT <i class="fas fa-fire text-yellow-300"></i></div>
                     <div class="h-24 mb-3 rounded-lg bg-cover bg-center" style="background-image: url('Fortnite.png'); background-color: #7c2d12;"></div>
                     <h3 class="font-gaming text-lg md:text-xl font-bold text-white mb-1">Fortnite Boost</h3>
                     <p class="text-xs text-gray-400 mb-3 line-clamp-2">Reduce el input lag y aumenta tus cuadros por segundo en PC competitiva.</p>
                     <button onclick="navigateTo('fortnite');" class="w-full bg-orange-600/20 hover:bg-orange-600 text-orange-400 hover:text-white py-2 rounded-lg text-sm font-bold transition click-sfx">Optimizar</button>
                 </div>
 
-                <!-- Card 2: Minecraft (Destacado Azul) -->
-                <div class="w-72 md:w-80 flex-shrink-0 glass-panel rounded-2xl p-4 relative overflow-hidden group tilt-card hover:bg-slate-800/80 transition-colors rgb-border">
+                <!-- Card 2: Minecraft -->
+                <div class="w-72 md:w-80 flex-shrink-0 glass-panel rounded-2xl p-4 relative overflow-hidden group tilt-card hover:bg-slate-800/80 transition-colors border border-slate-700">
                     <div class="tilt-shine"></div>
-                    <div class="absolute top-2 right-2 bg-blue-600 text-[10px] font-bold px-2 py-0.5 rounded text-white shadow-lg flex items-center gap-1">HOT <i class="fas fa-fire text-yellow-300"></i></div>
+                    <div class="absolute top-2 right-2 bg-blue-600 text-[10px] font-bold px-2 py-0.5 rounded text-white shadow-lg flex items-center gap-1 z-10">HOT <i class="fas fa-fire text-yellow-300"></i></div>
                     <div class="h-24 mb-3 rounded-lg bg-cover bg-center" style="background-image: url('Minecraft.png'); background-color: #064e3b;"></div>
                     <h3 class="font-gaming text-lg md:text-xl font-bold text-white mb-1">Minecraft +FPS</h3>
                     <p class="text-xs text-gray-400 mb-3 line-clamp-2">Cliente optimizado 1.21.5 y versiones anteriores. Java & Bedrock.</p>
@@ -390,7 +436,7 @@
             </div>
             <div class="flex flex-col gap-3" id="gamesList">
                 
-                <!-- Fortnite (NUEVO ORDEN: 1) -->
+                <!-- Fortnite -->
                 <div id="fortnite" class="accordion-item glass-panel rounded-xl overflow-hidden search-item transition-all duration-300">
                     <button class="accordion-header w-full flex items-center justify-between p-4 hover:bg-white/5 transition-colors text-left click-sfx" aria-expanded="false">
                         <div class="flex items-center gap-4">
@@ -412,7 +458,7 @@
                     </div>
                 </div>
 
-                <!-- Minecraft (NUEVO ORDEN: 2) -->
+                <!-- Minecraft -->
                 <div id="minecraft" class="accordion-item glass-panel rounded-xl overflow-hidden search-item transition-all duration-300">
                     <button class="accordion-header w-full flex items-center justify-between p-4 hover:bg-white/5 transition-colors text-left click-sfx" aria-expanded="false">
                         <div class="flex items-center gap-4">
@@ -595,20 +641,34 @@
                 <div class="h-px bg-slate-700 flex-1"></div>
             </div>
             <div class="flex flex-col gap-3" id="androidList">
-                 <div id="freefire" class="accordion-item glass-panel rounded-xl overflow-hidden search-item transition-all duration-300">
+                
+                <!-- A. OPTIMIZACIÓN SAMSUNG -->
+                <div id="samsung-opti" class="accordion-item glass-panel rounded-xl overflow-hidden search-item transition-all duration-300">
                     <button class="accordion-header w-full flex items-center justify-between p-4 hover:bg-white/5 transition-colors text-left click-sfx" aria-expanded="false">
                         <div class="flex items-center gap-4">
-                            <i class="fas fa-mobile-alt text-xl w-6 text-center text-gray-400"></i>
-                            <span class="font-semibold item-title">Hacks Freefire (Root Magisk)</span>
+                            <div class="w-10 h-10 rounded-lg bg-pink-900/50 flex items-center justify-center text-pink-400 border border-pink-700/50 text-lg">
+                                <i class="fas fa-mobile-alt relative"><i class="fas fa-rocket absolute -bottom-1 -right-2 text-[10px]"></i></i>
+                            </div>
+                            <span class="font-semibold text-lg item-title flex items-center flex-wrap gap-2">
+                                Optimización Universal Samsung (Test: S22 Ultra)
+                                <span class="px-2 py-0.5 text-[10px] font-bold text-white bg-blue-600 rounded flex items-center gap-1 shadow-[0_0_10px_rgba(37,99,235,0.5)] badge-anim w-max">
+                                    NUEVO <i class="fas fa-star text-yellow-300"></i>
+                                </span>
+                            </span>
                         </div>
                         <i class="fas fa-chevron-down transform transition-transform duration-300 text-slate-500"></i>
                     </button>
                     <div class="accordion-content max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
-                        <div class="p-5 border-t border-slate-700 bg-slate-900/30">
-                            <a href="https://cutyion.com/FreefireH" target="_blank" class="link-hover dl-link click-sfx">Descargar Hacks</a>
+                        <div class="p-5 border-t border-slate-700 bg-slate-900/30 flex flex-col gap-3">
+                            <p class="text-sm text-gray-300 border-l-4 border-cyan-500 pl-3 bg-cyan-900/20 py-2 rounded-r">
+                                <strong>Explicación:</strong> Elimina bloatware, optimiza procesos en segundo plano, mejora la duración de batería y disminuye la temperatura en reposo. Ejecutar desde PC conectando el teléfono.
+                            </p>
+                            <a href="https://cuty.io/OPTISAMSUNG" target="_blank" class="link-hover dl-link click-sfx"><i class="fas fa-download mr-2"></i> Descargar Script .BAT</a>
                         </div>
                     </div>
                 </div>
+
+                <!-- B. CAMBIAR RESOLUCIÓN -->
                 <div id="res-android" class="accordion-item glass-panel rounded-xl overflow-hidden search-item transition-all duration-300">
                     <button class="accordion-header w-full flex items-center justify-between p-4 hover:bg-white/5 transition-colors text-left click-sfx" aria-expanded="false">
                         <div class="flex items-center gap-4">
@@ -624,6 +684,8 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- C. WIFI PC A ANDROID -->
                 <div id="wifi-tool" class="accordion-item glass-panel rounded-xl overflow-hidden search-item transition-all duration-300">
                     <button class="accordion-header w-full flex items-center justify-between p-4 hover:bg-white/5 transition-colors text-left click-sfx" aria-expanded="false">
                         <div class="flex items-center gap-4">
@@ -638,11 +700,18 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- D. OPTIMIZACIÓN .BAT (EN PROCESO) -->
                 <div id="bat-android" class="accordion-item glass-panel rounded-xl overflow-hidden search-item transition-all duration-300">
                     <button class="accordion-header w-full flex items-center justify-between p-4 hover:bg-white/5 transition-colors text-left click-sfx" aria-expanded="false">
                         <div class="flex items-center gap-4">
                             <i class="fas fa-terminal text-xl w-6 text-center text-gray-400"></i>
-                            <span class="font-semibold item-title">Optimización .BAT Android</span>
+                            <span class="font-semibold item-title flex items-center flex-wrap gap-2">
+                                Optimización .BAT Android
+                                <span class="px-2 py-0.5 text-[10px] font-bold text-white bg-orange-600 rounded flex items-center gap-1 shadow-md w-max">
+                                    <i class="fas fa-tools"></i> En proceso de mejora
+                                </span>
+                            </span>
                         </div>
                         <i class="fas fa-chevron-down transform transition-transform duration-300 text-slate-500"></i>
                     </button>
@@ -652,6 +721,23 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- E. FREEFIRE -->
+                 <div id="freefire" class="accordion-item glass-panel rounded-xl overflow-hidden search-item transition-all duration-300">
+                    <button class="accordion-header w-full flex items-center justify-between p-4 hover:bg-white/5 transition-colors text-left click-sfx" aria-expanded="false">
+                        <div class="flex items-center gap-4">
+                            <i class="fas fa-crosshairs text-xl w-6 text-center text-gray-400"></i>
+                            <span class="font-semibold item-title">Hacks Freefire (Root Magisk)</span>
+                        </div>
+                        <i class="fas fa-chevron-down transform transition-transform duration-300 text-slate-500"></i>
+                    </button>
+                    <div class="accordion-content max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+                        <div class="p-5 border-t border-slate-700 bg-slate-900/30">
+                            <a href="https://cutyion.com/FreefireH" target="_blank" class="link-hover dl-link click-sfx">Descargar Hacks</a>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </section>
 
@@ -882,7 +968,27 @@
             }
         }
 
-        // --- NEW TRAIL EFFECT (MORE VISIBLE) ---
+        // --- TOOLTIP LOGIC (30 Seconds interval) ---
+        setInterval(() => {
+            const body = document.body;
+            // Solo si no está en modo rendimiento
+            if (!body.classList.contains('performance-mode')) {
+                const tooltip = document.getElementById('perfTooltip');
+                if(tooltip) {
+                    // Mostrar
+                    tooltip.classList.remove('opacity-0', 'translate-x-4', 'pointer-events-none');
+                    tooltip.classList.add('animate-wiggle');
+                    
+                    // Ocultar después de 6 segundos
+                    setTimeout(() => {
+                        tooltip.classList.add('opacity-0', 'translate-x-4', 'pointer-events-none');
+                        tooltip.classList.remove('animate-wiggle');
+                    }, 6000);
+                }
+            }
+        }, 30000); // 30000 ms = 30 segundos
+
+        // --- TRAIL EFFECT ---
         let initTrail;
         (function() {
             const canvas = document.getElementById('trailCanvas');
@@ -901,18 +1007,16 @@
                 constructor(x, y) {
                     this.x = x;
                     this.y = y;
-                    // Mayor tamaño inicial para que se vea
                     this.size = Math.random() * 5 + 2; 
                     this.speedX = Math.random() * 3 - 1.5;
                     this.speedY = Math.random() * 3 - 1.5;
-                    // Colores Neon Brillantes
                     this.color = Math.random() > 0.5 ? '0, 255, 255' : '200, 0, 255'; 
                     this.life = 1.0;
                 }
                 update() {
                     this.x += this.speedX;
                     this.y += this.speedY;
-                    this.life -= 0.02; // Desvanecimiento lento
+                    this.life -= 0.02; 
                     if(this.size > 0.2) this.size -= 0.1;
                 }
                 draw() {
@@ -920,18 +1024,16 @@
                     ctx.beginPath();
                     ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
                     ctx.fill();
-                    
-                    // Efecto de brillo extra
                     ctx.shadowBlur = 10;
                     ctx.shadowColor = `rgba(${this.color}, 1)`;
                 }
             }
 
             function animateTrail() {
-                if(document.body.classList.contains('performance-mode')) return; // Stop if perf mode
+                if(document.body.classList.contains('performance-mode')) return; 
 
                 ctx.clearRect(0, 0, width, height);
-                ctx.shadowBlur = 0; // Reset for performance when clearing
+                ctx.shadowBlur = 0; 
                 
                 for(let i=0; i<particles.length; i++) {
                     particles[i].update();
@@ -944,25 +1046,22 @@
                 requestAnimationFrame(animateTrail);
             }
 
-            // Public init function
             initTrail = function() {
                 resize();
                 animateTrail();
             };
 
-            // Event Listeners for Mouse/Touch
             const addSparkles = (x, y) => {
                 if(document.body.classList.contains('performance-mode')) return;
-                for(let i=0; i<3; i++) { // 3 particulas por movimiento
+                for(let i=0; i<3; i++) { 
                     particles.push(new Sparkle(x, y));
                 }
-                if(particles.length > 100) particles.splice(0, 20); // Limite
+                if(particles.length > 100) particles.splice(0, 20); 
             };
 
             window.addEventListener('mousemove', e => addSparkles(e.clientX, e.clientY));
             window.addEventListener('touchmove', e => addSparkles(e.touches[0].clientX, e.touches[0].clientY), {passive: true});
             
-            // Start
             initTrail();
         })();
 
@@ -1020,7 +1119,7 @@
             else {
                 if(['minecraft','fortnite','wd2','dragonball','pes2017','rocketleague','cod','gtav'].includes(id)) {
                     filterCategory('pc', document.querySelectorAll('.filter-btn')[1]);
-                } else if(['freefire','res-android','wifi-tool','bat-android'].includes(id)) {
+                } else if(['freefire','res-android','wifi-tool','bat-android','samsung-opti'].includes(id)) {
                     filterCategory('android', document.querySelectorAll('.filter-btn')[2]);
                 } else if(['winteros'].includes(id)) {
                     filterCategory('system', document.querySelectorAll('.filter-btn')[3]);
@@ -1032,8 +1131,7 @@
                     element.scrollIntoView({ behavior: 'smooth', block: 'center' });
                     const btn = element.querySelector('.accordion-header');
                     const content = element.querySelector('.accordion-content');
-                    // Check if closed (maxHeight is null or empty)
-                    if(!content.style.maxHeight) { toggleAccordion(btn); }
+                    if(content && !content.style.maxHeight) { toggleAccordion(btn); }
                     
                     element.classList.add('ring-2', 'ring-cyan-400', 'ring-offset-2', 'ring-offset-[#0f172a]');
                     setTimeout(() => element.classList.remove('ring-2', 'ring-cyan-400', 'ring-offset-2', 'ring-offset-[#0f172a]'), 2000);
@@ -1120,23 +1218,6 @@
 
         document.getElementById('year').textContent = new Date().getFullYear();
         
-        // --- PERFORMANCE REMINDER (Cada 30s) ---
-        setInterval(() => {
-            if(!document.body.classList.contains('performance-mode')) {
-                const reminder = document.getElementById('perfReminder');
-                if(reminder) {
-                    reminder.classList.remove('opacity-0', 'translate-x-4');
-                    reminder.classList.add('opacity-100', 'translate-x-0', 'animate-bounce');
-                    
-                    // Ocultar de nuevo tras 6 segundos
-                    setTimeout(() => {
-                        reminder.classList.remove('opacity-100', 'translate-x-0', 'animate-bounce');
-                        reminder.classList.add('opacity-0', 'translate-x-4');
-                    }, 6000);
-                }
-            }
-        }, 30000);
-        
         // --- 3D TILT ---
         let isTicking = false;
         document.addEventListener('mousemove', (e) => {
@@ -1178,7 +1259,7 @@
             const items = document.querySelectorAll('.search-item');
             if (filter.length > 0) {
                 document.getElementById('acortadorSection').style.display = 'none';
-                document.getElementById('featuredSection').parentElement.style.display = 'none'; // Hide parent section of carousel
+                document.getElementById('featuredSection').parentElement.style.display = 'none'; 
                 document.getElementById('gamesSection').style.display = 'block';
                 document.getElementById('androidSection').style.display = 'block';
                 document.getElementById('osSection').style.display = 'block';
@@ -1305,6 +1386,7 @@
         // Modals
         function showModal(id) {
             const modal = document.getElementById(id);
+            if(!modal) return;
             modal.classList.remove('hidden'); modal.classList.add('flex');
             modal.setAttribute('aria-modal', 'true');
             if (id !== 'aboutModal' && id !== 'paypalModal' && id !== 'nequiModal') {
@@ -1313,6 +1395,7 @@
         }
         function closeModal(id) {
             const modal = document.getElementById(id);
+            if(!modal) return;
             modal.classList.add('hidden'); modal.classList.remove('flex');
             modal.setAttribute('aria-modal', 'false');
             if(id === 'videoModal') { const iframe = modal.querySelector('iframe'); const src = iframe.src; iframe.src = ''; iframe.src = src; }
