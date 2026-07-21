@@ -331,10 +331,10 @@
             </div>
         </div>
 
-        <!-- FEATURED SECTION (NUEVO DISEÑO) -->
+        <!-- FEATURED SECTION (ÚLTIMAS CARGAS) -->
         <section class="reveal-on-scroll w-full flex flex-col items-center">
             <h2 class="w-full text-center text-3xl font-gaming font-bold text-white mb-2 animate-pulse drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]">
-                <i class="fas fa-star text-yellow-400 mr-2"></i> ÚLTIMOS ARCHIVOS
+                <i class="fas fa-star text-yellow-400 mr-2"></i> ÚLTIMAS CARGAS
             </h2>
 
             <!-- Separador: Modificaciones -->
@@ -344,9 +344,37 @@
                 <div class="h-px bg-slate-700 flex-1"></div>
             </div>
 
-            <!-- Tarjeta Rectangular de Samsung -->
-            <div onclick="navigateTo('samsung-opti');" class="w-full max-w-2xl mx-auto glass-panel rounded-xl p-4 relative overflow-hidden group hover:bg-slate-800/80 transition-colors rgb-border mb-6 flex flex-col sm:flex-row items-center justify-between gap-4 cursor-pointer">
+            <!-- Tarjeta 1: Quitar Candado Claro (NUEVO DESTACADO) -->
+            <div onclick="navigateTo('candado-claro');" class="w-full max-w-2xl mx-auto glass-panel rounded-xl p-4 relative overflow-hidden group hover:bg-slate-800/80 transition-colors rgb-border mb-4 flex flex-col sm:flex-row items-center justify-between gap-4 cursor-pointer">
                 <div class="tilt-shine"></div>
+                <div class="flex items-center gap-4 z-10 relative w-full">
+                    <!-- Icono -->
+                    <div class="w-14 h-14 rounded-lg bg-slate-900 border border-slate-700 flex items-center justify-center text-red-500 text-2xl flex-shrink-0 relative overflow-hidden">
+                        <div class="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
+                        <i class="fas fa-unlock-alt relative z-10"></i>
+                    </div>
+                    <!-- Textos -->
+                    <div class="text-left flex-1">
+                        <h3 class="font-gaming text-lg sm:text-xl font-bold text-white leading-tight flex items-center flex-wrap gap-2 mb-1">
+                            Quitar Candado Claro
+                            <span class="bg-red-600 text-[10px] font-bold px-2 py-0.5 rounded text-white shadow-lg animate-pulse whitespace-nowrap flex items-center gap-1">
+                                ÚLTIMO PUBLICADO <span class="bg-white text-red-600 px-1 rounded">HOT</span> <i class="fas fa-fire text-yellow-300"></i>
+                            </span>
+                        </h3>
+                        <p class="text-xs text-gray-400 line-clamp-2">Desbloquea tu dispositivo Claro de forma fácil y segura.</p>
+                    </div>
+                </div>
+                <!-- Flecha derecha -->
+                <div class="z-10 relative hidden sm:block">
+                    <button class="bg-red-600/20 group-hover:bg-red-600 text-red-400 group-hover:text-white px-4 py-2 rounded-lg text-sm font-bold transition">Ver</button>
+                </div>
+            </div>
+
+            <!-- Tarjeta 2: Samsung Universal (ANTERIOR DESTACADO) -->
+            <div onclick="navigateTo('samsung-opti');" class="w-full max-w-2xl mx-auto glass-panel rounded-xl p-4 relative overflow-hidden group hover:bg-slate-800/80 transition-colors border border-slate-700 mb-6 flex flex-col sm:flex-row items-center justify-between gap-4 cursor-pointer">
+                <div class="tilt-shine"></div>
+                <!-- Badge for Mobile -->
+                <div class="absolute top-2 right-2 bg-blue-600 text-[10px] font-bold px-2 py-0.5 rounded text-white shadow-lg flex items-center gap-1 z-10 sm:hidden">HOT <i class="fas fa-fire text-yellow-300"></i></div>
                 <div class="flex items-center gap-4 z-10 relative w-full">
                     <!-- Icono -->
                     <div class="w-14 h-14 rounded-lg bg-slate-900 border border-slate-700 flex items-center justify-center text-pink-500 text-2xl flex-shrink-0 relative overflow-hidden">
@@ -357,8 +385,9 @@
                     <div class="text-left flex-1">
                         <h3 class="font-gaming text-lg sm:text-xl font-bold text-white leading-tight flex items-center flex-wrap gap-2 mb-1">
                             Opti Samsung Universal
-                            <span class="bg-red-600 text-[10px] font-bold px-2 py-0.5 rounded text-white shadow-lg animate-pulse whitespace-nowrap flex items-center gap-1">
-                                ÚLTIMO PUBLICADO <span class="bg-white text-red-600 px-1 rounded">HOT</span> <i class="fas fa-fire text-yellow-300"></i>
+                            <!-- Badge for Desktop -->
+                            <span class="hidden sm:flex bg-blue-600 text-[10px] font-bold px-2 py-0.5 rounded text-white shadow-lg whitespace-nowrap items-center gap-1">
+                                HOT <i class="fas fa-fire text-yellow-300"></i>
                             </span>
                         </h3>
                         <p class="text-xs text-gray-400 line-clamp-2">Elimina bloatware, baja temperatura y mejora duración de batería.</p>
@@ -377,9 +406,9 @@
                 <div class="h-px bg-slate-700 flex-1"></div>
             </div>
 
-            <!-- Cuadros Originales (Juegos) -->
+            <!-- Cuadros de Juegos (#3 y #4) -->
             <div id="featuredSection" class="w-full flex justify-center gap-6 overflow-x-auto py-2 px-4 scrollbar-hide flex-wrap md:flex-nowrap">
-                <!-- Card 1: Fortnite -->
+                <!-- Card 3: Fortnite -->
                 <div class="w-72 md:w-80 flex-shrink-0 glass-panel rounded-2xl p-4 relative overflow-hidden group tilt-card hover:bg-slate-800/80 transition-colors border border-slate-700">
                     <div class="tilt-shine"></div>
                     <div class="absolute top-2 right-2 bg-blue-600 text-[10px] font-bold px-2 py-0.5 rounded text-white shadow-lg flex items-center gap-1 z-10">HOT <i class="fas fa-fire text-yellow-300"></i></div>
@@ -389,7 +418,7 @@
                     <button onclick="navigateTo('fortnite');" class="w-full bg-orange-600/20 hover:bg-orange-600 text-orange-400 hover:text-white py-2 rounded-lg text-sm font-bold transition click-sfx">Optimizar</button>
                 </div>
 
-                <!-- Card 2: Minecraft -->
+                <!-- Card 4: Minecraft -->
                 <div class="w-72 md:w-80 flex-shrink-0 glass-panel rounded-2xl p-4 relative overflow-hidden group tilt-card hover:bg-slate-800/80 transition-colors border border-slate-700">
                     <div class="tilt-shine"></div>
                     <div class="absolute top-2 right-2 bg-blue-600 text-[10px] font-bold px-2 py-0.5 rounded text-white shadow-lg flex items-center gap-1 z-10">HOT <i class="fas fa-fire text-yellow-300"></i></div>
@@ -427,7 +456,7 @@
                     <div class="accordion-content max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
                         <div class="p-5 border-t border-slate-700 bg-slate-900/30">
                             <div class="flex justify-center mb-4"><img src="Fortnite.png" onerror="this.style.display='none'" alt="Fortnite" loading="lazy" class="animate-float max-h-32 object-contain"></div>
-                            <a href="https://cuty.io/FortAJFPS" target="_blank" class="link-hover dl-link click-sfx"><i class="fas fa-download mr-2"></i> Optimización Definitiva</a>
+                            <a href="https://cuty.io/FortAJFPS" target="_blank" class="link-hover dl-link click-sfx"><i class="fas fa-download mr-2 text-cyan-400"></i> Optimización Definitiva</a>
                         </div>
                     </div>
                 </div>
@@ -454,18 +483,18 @@
                                     <h4 class="text-green-400 font-bold mb-2 text-sm uppercase">Java Edition</h4>
                                     <ul class="space-y-2">
                                         <li><a href="https://cutyion.com/MC1215AJ" target="_blank" class="flex items-center gap-2 text-sm hover:text-cyan-400 group dl-link click-sfx">
-                                            <i class="fas fa-download text-xs"></i> 1.21.5 +FPS <span class="ml-2 bg-cyan-500 text-black text-[9px] px-1.5 py-0.5 rounded font-bold animate-pulse">NUEVO</span>
+                                            <i class="fas fa-download text-xs text-cyan-400"></i> 1.21.5 +FPS <span class="ml-2 bg-cyan-500 text-black text-[9px] px-1.5 py-0.5 rounded font-bold animate-pulse">NUEVO</span>
                                         </a></li>
-                                        <li><a href="https://cutyion.com/MC1214AJ" target="_blank" class="flex items-center gap-2 text-sm hover:text-cyan-400 dl-link click-sfx"><i class="fas fa-download text-xs"></i> 1.21.4 +FPS</a></li>
-                                        <li><a href="https://cutyion.com/MC1211" target="_blank" class="flex items-center gap-2 text-sm hover:text-cyan-400 dl-link click-sfx"><i class="fas fa-download text-xs"></i> 1.21.1 +FPS</a></li>
-                                        <li><a href="https://cuty.io/ConfigMC" target="_blank" class="flex items-center gap-2 text-sm hover:text-cyan-400 dl-link click-sfx"><i class="fas fa-cog text-xs"></i> Configuración +FPS</a></li>
+                                        <li><a href="https://cutyion.com/MC1214AJ" target="_blank" class="flex items-center gap-2 text-sm hover:text-cyan-400 dl-link click-sfx"><i class="fas fa-download text-xs text-cyan-400"></i> 1.21.4 +FPS</a></li>
+                                        <li><a href="https://cutyion.com/MC1211" target="_blank" class="flex items-center gap-2 text-sm hover:text-cyan-400 dl-link click-sfx"><i class="fas fa-download text-xs text-cyan-400"></i> 1.21.1 +FPS</a></li>
+                                        <li><a href="https://cuty.io/ConfigMC" target="_blank" class="flex items-center gap-2 text-sm hover:text-cyan-400 dl-link click-sfx"><i class="fas fa-cog text-xs text-cyan-400"></i> Configuración +FPS</a></li>
                                     </ul>
                                 </div>
                                 <div>
                                     <h4 class="text-green-400 font-bold mb-2 text-sm uppercase">Bedrock Edition</h4>
                                     <ul class="space-y-2">
-                                        <li><a href="https://cutyion.com/AJBEDROCKFPS" target="_blank" class="flex items-center gap-2 text-sm hover:text-cyan-400 dl-link click-sfx"><i class="fas fa-download text-xs"></i> Bedrock +FPS</a></li>
-                                        <li><a href="https://cutyion.com/BEDROCKPCFPS" target="_blank" class="flex items-center gap-2 text-sm hover:text-cyan-400 dl-link click-sfx"><i class="fas fa-desktop text-xs"></i> PC Bedrock +FPS</a></li>
+                                        <li><a href="https://cutyion.com/AJBEDROCKFPS" target="_blank" class="flex items-center gap-2 text-sm hover:text-cyan-400 dl-link click-sfx"><i class="fas fa-download text-xs text-cyan-400"></i> Bedrock +FPS</a></li>
+                                        <li><a href="https://cutyion.com/BEDROCKPCFPS" target="_blank" class="flex items-center gap-2 text-sm hover:text-cyan-400 dl-link click-sfx"><i class="fas fa-desktop text-xs text-cyan-400"></i> PC Bedrock +FPS</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -505,7 +534,7 @@
                     <div class="accordion-content max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
                         <div class="p-5 border-t border-slate-700 bg-slate-900/30">
                             <div class="flex justify-center mb-4"><img src="WatchDogs2.png" onerror="this.style.display='none'" alt="WatchDogs2" loading="lazy" class="animate-float max-h-32 object-contain"></div>
-                            <a href="https://cutyion.com/WD2FPS" target="_blank" class="link-hover dl-link click-sfx"><i class="fas fa-download mr-2"></i> Descargar Optimización +FPS</a>
+                            <a href="https://cutyion.com/WD2FPS" target="_blank" class="link-hover dl-link click-sfx"><i class="fas fa-download mr-2 text-cyan-400"></i> Descargar Optimización +FPS</a>
                         </div>
                     </div>
                 </div>
@@ -522,7 +551,7 @@
                     <div class="accordion-content max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
                         <div class="p-5 border-t border-slate-700 bg-slate-900/30">
                             <div class="flex justify-center mb-4"><img src="Dragonball.png" onerror="this.style.display='none'" alt="Dragon Ball" loading="lazy" class="animate-float max-h-32 object-contain"></div>
-                            <a href="https://cutyion.com/DragonBallAJ" target="_blank" class="link-hover dl-link click-sfx"><i class="fas fa-download mr-2"></i> Descargar +FPS</a>
+                            <a href="https://cutyion.com/DragonBallAJ" target="_blank" class="link-hover dl-link click-sfx"><i class="fas fa-download mr-2 text-cyan-400"></i> Descargar +FPS</a>
                         </div>
                     </div>
                 </div>
@@ -539,7 +568,7 @@
                     <div class="accordion-content max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
                         <div class="p-5 border-t border-slate-700 bg-slate-900/30">
                             <div class="flex justify-center mb-4"><img src="pes2017.png" onerror="this.style.display='none'" alt="PES" loading="lazy" class="animate-float max-h-32 object-contain"></div>
-                            <a href="https://cuty.io/PES2017AJ" target="_blank" class="link-hover dl-link click-sfx"><i class="fas fa-download mr-2"></i> Descargar Opti +FPS</a>
+                            <a href="https://cuty.io/PES2017AJ" target="_blank" class="link-hover dl-link click-sfx"><i class="fas fa-download mr-2 text-cyan-400"></i> Descargar Opti +FPS</a>
                         </div>
                     </div>
                 </div>
@@ -556,7 +585,7 @@
                     <div class="accordion-content max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
                         <div class="p-5 border-t border-slate-700 bg-slate-900/30">
                             <div class="flex justify-center mb-4"><img src="rocketLeague.png" onerror="this.style.display='none'" alt="Rocket League" loading="lazy" class="animate-float max-h-32 object-contain"></div>
-                            <a href="https://cuty.io/ROCKETFPSAJ" target="_blank" class="link-hover dl-link click-sfx"><i class="fas fa-download mr-2"></i> Descargar +FPS</a>
+                            <a href="https://cuty.io/ROCKETFPSAJ" target="_blank" class="link-hover dl-link click-sfx"><i class="fas fa-download mr-2 text-cyan-400"></i> Descargar +FPS</a>
                         </div>
                     </div>
                 </div>
@@ -576,12 +605,12 @@
                                 <div class="bg-black/20 p-3 rounded text-center">
                                     <h5 class="font-bold mb-2">Black Ops 2</h5>
                                     <img src="codbo2.png" onerror="this.style.display='none'" alt="COD BO2" loading="lazy" class="h-20 mx-auto mb-2 object-contain">
-                                    <a href="https://cuty.io/CODBO2FPS" target="_blank" class="text-sm text-cyan-400 hover:text-cyan-300 dl-link click-sfx">Descargar +FPS</a>
+                                    <a href="https://cuty.io/CODBO2FPS" target="_blank" class="text-sm text-cyan-400 hover:text-cyan-300 dl-link click-sfx"><i class="fas fa-download mr-1"></i> Descargar +FPS</a>
                                 </div>
                                 <div class="bg-black/20 p-3 rounded text-center">
                                     <h5 class="font-bold mb-2">Modern Warfare 3</h5>
                                     <img src="CoDmw3.png" onerror="this.style.display='none'" alt="COD MW3" loading="lazy" class="h-20 mx-auto mb-2 object-contain">
-                                    <a href="https://cuty.io/CODMW3FPS" target="_blank" class="text-sm text-cyan-400 hover:text-cyan-300 dl-link click-sfx">Descargar +FPS</a>
+                                    <a href="https://cuty.io/CODMW3FPS" target="_blank" class="text-sm text-cyan-400 hover:text-cyan-300 dl-link click-sfx"><i class="fas fa-download mr-1"></i> Descargar +FPS</a>
                                 </div>
                             </div>
                         </div>
@@ -600,7 +629,7 @@
                     <div class="accordion-content max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
                         <div class="p-5 border-t border-slate-700 bg-slate-900/30">
                             <div class="flex justify-center mb-4"><img src="gtav.png" onerror="this.style.display='none'" alt="GTA V" loading="lazy" class="animate-float max-h-32 object-contain"></div>
-                            <a href="https://cuty.io/GTAVFPSAJ" target="_blank" class="link-hover dl-link click-sfx"><i class="fas fa-download mr-2"></i> Descargar +FPS</a>
+                            <a href="https://cuty.io/GTAVFPSAJ" target="_blank" class="link-hover dl-link click-sfx"><i class="fas fa-download mr-2 text-cyan-400"></i> Descargar +FPS</a>
                         </div>
                     </div>
                 </div>
@@ -616,15 +645,15 @@
             </div>
             <div class="flex flex-col gap-3" id="androidList">
                 
-                <!-- A. OPTIMIZACIÓN SAMSUNG -->
-                <div id="samsung-opti" class="accordion-item glass-panel rounded-xl overflow-hidden search-item transition-all duration-300">
+                <!-- A. QUITAR CANDADO CLARO -->
+                <div id="candado-claro" class="accordion-item glass-panel rounded-xl overflow-hidden search-item transition-all duration-300">
                     <button class="accordion-header w-full flex items-center justify-between p-4 hover:bg-white/5 transition-colors text-left click-sfx" aria-expanded="false">
                         <div class="flex items-center gap-4">
-                            <div class="w-10 h-10 rounded-lg bg-pink-900/50 flex items-center justify-center text-pink-400 border border-pink-700/50 text-lg">
-                                <i class="fas fa-mobile-alt relative"><i class="fas fa-rocket absolute -bottom-1 -right-2 text-[10px]"></i></i>
+                            <div class="w-10 h-10 rounded-lg bg-red-900/50 flex items-center justify-center text-red-400 border border-red-700/50 text-lg">
+                                <i class="fas fa-unlock-alt"></i>
                             </div>
-                            <span class="font-semibold text-lg item-title flex items-center flex-wrap gap-2">
-                                Optimización Universal Samsung (Test: S22 Ultra)
+                            <span class="font-semibold text-lg item-title flex items-center flex-wrap md:flex-nowrap gap-2">
+                                Quitar Candado Claro
                                 <span class="px-2 py-0.5 text-[10px] font-bold text-white bg-blue-600 rounded flex items-center gap-1 shadow-[0_0_10px_rgba(37,99,235,0.5)] badge-anim w-max">
                                     NUEVO <i class="fas fa-star text-yellow-300"></i>
                                 </span>
@@ -634,55 +663,90 @@
                     </button>
                     <div class="accordion-content max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
                         <div class="p-5 border-t border-slate-700 bg-slate-900/30 flex flex-col gap-3">
-                            <p class="text-sm text-gray-300 border-l-4 border-cyan-500 pl-3 bg-cyan-900/20 py-2 rounded-r">
-                                <strong>Explicación:</strong> Elimina bloatware, optimiza procesos en segundo plano, mejora la duración de batería y disminuye la temperatura en reposo. Ejecutar desde PC conectando el teléfono.
+                            <p class="text-sm text-gray-300 border-l-4 border-red-500 pl-3 bg-red-900/20 py-2 rounded-r">
+                                <strong>Explicación:</strong> Método para quitar el candado de dispositivos Claro de forma segura y efectiva.
                             </p>
-                            <a href="https://cuty.io/OPTISAMSUNG" target="_blank" class="link-hover dl-link click-sfx"><i class="fas fa-download mr-2"></i> Descargar Script .BAT</a>
+                            <!-- Botón Tutorial (No abre acortador) -->
+                            <a href="https://www.tiktok.com/@ajk.al/video/7664623114214591762?is_from_webapp=1&sender_device=pc&web_id=7642819972380640784" target="_blank" class="link-hover click-sfx"><i class="fab fa-tiktok mr-2 text-pink-500"></i> Ver Video Tutorial</a>
+                            <!-- Botón Descarga (Abre acortador modal) -->
+                            <a href="https://cuty.io/CANDADOCLARO" target="_blank" class="link-hover dl-link click-sfx"><i class="fas fa-download mr-2 text-cyan-400"></i> Descargar Archivos</a>
                         </div>
                     </div>
                 </div>
 
-                <!-- B. CAMBIAR RESOLUCIÓN -->
+                <!-- B. OPTIMIZACIÓN SAMSUNG -->
+                <div id="samsung-opti" class="accordion-item glass-panel rounded-xl overflow-hidden search-item transition-all duration-300">
+                    <button class="accordion-header w-full flex items-center justify-between p-4 hover:bg-white/5 transition-colors text-left click-sfx" aria-expanded="false">
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-lg bg-pink-900/50 flex items-center justify-center text-pink-400 border border-pink-700/50 text-lg">
+                                <i class="fas fa-mobile-alt relative"><i class="fas fa-rocket absolute -bottom-1 -right-2 text-[10px]"></i></i>
+                            </div>
+                            <span class="font-semibold text-lg item-title flex items-center flex-wrap md:flex-nowrap gap-2">
+                                Optimizacion Para CUALQUIER Samsung (Probado en S22 ULTRA)
+                            </span>
+                        </div>
+                        <i class="fas fa-chevron-down transform transition-transform duration-300 text-slate-500"></i>
+                    </button>
+                    <div class="accordion-content max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+                        <div class="p-5 border-t border-slate-700 bg-slate-900/30 flex flex-col gap-3">
+                            <p class="text-sm text-gray-300 border-l-4 border-cyan-500 pl-3 bg-cyan-900/20 py-2 rounded-r">
+                                <strong>Explicación:</strong> Elimina bloatware, optimiza procesos en segundo plano, mejora la duración de batería, disminuye la temperatura en reposo. Ejecutar desde PC conectando el teléfono.
+                            </p>
+                            <!-- Botón Tutorial (No abre acortador) -->
+                            <a href="https://www.tiktok.com/@ajk.al/video/7660080097570950418?is_from_webapp=1&sender_device=pc&web_id=7642819972380640784" target="_blank" class="link-hover click-sfx"><i class="fab fa-tiktok mr-2 text-pink-500"></i> Ver Video Tutorial</a>
+                            <!-- Botón Descarga (Abre acortador modal) -->
+                            <a href="https://cuty.io/OPTISAMSUNG" target="_blank" class="link-hover dl-link click-sfx"><i class="fas fa-download mr-2 text-cyan-400"></i> Descargar Script .BAT</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- C. CAMBIAR RESOLUCIÓN -->
                 <div id="res-android" class="accordion-item glass-panel rounded-xl overflow-hidden search-item transition-all duration-300">
                     <button class="accordion-header w-full flex items-center justify-between p-4 hover:bg-white/5 transition-colors text-left click-sfx" aria-expanded="false">
                         <div class="flex items-center gap-4">
-                            <i class="fas fa-expand text-xl w-6 text-center text-gray-400"></i>
-                            <span class="font-semibold item-title">Cambiar Resolución Android +FPS</span>
+                            <div class="w-10 h-10 rounded-lg bg-indigo-900/50 flex items-center justify-center text-indigo-400 border border-indigo-700/50 text-lg">
+                                <i class="fas fa-expand"></i>
+                            </div>
+                            <span class="font-semibold text-lg item-title">Cambiar Resolución Android +FPS</span>
                         </div>
                         <i class="fas fa-chevron-down transform transition-transform duration-300 text-slate-500"></i>
                     </button>
                     <div class="accordion-content max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
-                        <div class="p-5 border-t border-slate-700 bg-slate-900/30 flex flex-col gap-2">
-                            <a href="https://www.tiktok.com/@ajk.al/video/7273274423484976390" target="_blank" class="link-hover click-sfx"><i class="fab fa-tiktok"></i> Ver Video Tutorial</a>
-                            <a href="https://cuty.io/ANDROIDFPS" target="_blank" class="link-hover dl-link click-sfx"><i class="fas fa-file-download"></i> Descargar Archivo</a>
+                        <div class="p-5 border-t border-slate-700 bg-slate-900/30 flex flex-col gap-3">
+                            <a href="https://www.tiktok.com/@ajk.al/video/7273274423484976390" target="_blank" class="link-hover click-sfx"><i class="fab fa-tiktok mr-2 text-pink-500"></i> Ver Video Tutorial</a>
+                            <a href="https://cuty.io/ANDROIDFPS" target="_blank" class="link-hover dl-link click-sfx"><i class="fas fa-download mr-2 text-cyan-400"></i> Descargar Archivo</a>
                         </div>
                     </div>
                 </div>
 
-                <!-- C. WIFI PC A ANDROID -->
+                <!-- D. WIFI PC A ANDROID -->
                 <div id="wifi-tool" class="accordion-item glass-panel rounded-xl overflow-hidden search-item transition-all duration-300">
                     <button class="accordion-header w-full flex items-center justify-between p-4 hover:bg-white/5 transition-colors text-left click-sfx" aria-expanded="false">
                         <div class="flex items-center gap-4">
-                            <i class="fas fa-wifi text-xl w-6 text-center text-gray-400"></i>
-                            <span class="font-semibold item-title">WiFi PC a Android Directo</span>
+                            <div class="w-10 h-10 rounded-lg bg-teal-900/50 flex items-center justify-center text-teal-400 border border-teal-700/50 text-lg">
+                                <i class="fas fa-wifi"></i>
+                            </div>
+                            <span class="font-semibold text-lg item-title">WiFi PC a Android Directo</span>
                         </div>
                         <i class="fas fa-chevron-down transform transition-transform duration-300 text-slate-500"></i>
                     </button>
                     <div class="accordion-content max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
-                        <div class="p-5 border-t border-slate-700 bg-slate-900/30">
-                            <a href="https://cuty.io/PCAANDROID" target="_blank" class="link-hover dl-link click-sfx">Descargar WiFi Tool</a>
+                        <div class="p-5 border-t border-slate-700 bg-slate-900/30 flex flex-col gap-3">
+                            <a href="https://cuty.io/PCAANDROID" target="_blank" class="link-hover dl-link click-sfx"><i class="fas fa-download mr-2 text-cyan-400"></i> Descargar WiFi Tool</a>
                         </div>
                     </div>
                 </div>
 
-                <!-- D. OPTIMIZACIÓN .BAT (EN PROCESO) -->
+                <!-- E. OPTIMIZACIÓN .BAT (EN PROCESO) -->
                 <div id="bat-android" class="accordion-item glass-panel rounded-xl overflow-hidden search-item transition-all duration-300">
                     <button class="accordion-header w-full flex items-center justify-between p-4 hover:bg-white/5 transition-colors text-left click-sfx" aria-expanded="false">
                         <div class="flex items-center gap-4">
-                            <i class="fas fa-terminal text-xl w-6 text-center text-gray-400"></i>
-                            <span class="font-semibold item-title flex items-center flex-wrap gap-2">
+                            <div class="w-10 h-10 rounded-lg bg-orange-900/50 flex items-center justify-center text-orange-400 border border-orange-700/50 text-lg">
+                                <i class="fas fa-terminal"></i>
+                            </div>
+                            <span class="font-semibold text-lg item-title flex items-center flex-wrap gap-2">
                                 Optimización .BAT Android
-                                <span class="px-2 py-0.5 text-[10px] font-bold text-white bg-orange-600 rounded flex items-center gap-1 shadow-md w-max">
+                                <span class="px-2 py-0.5 text-[10px] font-bold text-white bg-orange-600 rounded flex items-center gap-1 shadow-[0_0_10px_rgba(234,88,12,0.5)] w-max">
                                     <i class="fas fa-tools"></i> En proceso de mejora
                                 </span>
                             </span>
@@ -690,24 +754,26 @@
                         <i class="fas fa-chevron-down transform transition-transform duration-300 text-slate-500"></i>
                     </button>
                     <div class="accordion-content max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
-                        <div class="p-5 border-t border-slate-700 bg-slate-900/30">
-                            <a href="https://cutyion.com/OPTIANDROID" target="_blank" class="link-hover dl-link click-sfx">Descargar Script .BAT</a>
+                        <div class="p-5 border-t border-slate-700 bg-slate-900/30 flex flex-col gap-3">
+                            <a href="https://cutyion.com/OPTIANDROID" target="_blank" class="link-hover dl-link click-sfx"><i class="fas fa-download mr-2 text-cyan-400"></i> Descargar Script .BAT</a>
                         </div>
                     </div>
                 </div>
 
-                <!-- E. FREEFIRE -->
+                <!-- F. FREEFIRE -->
                  <div id="freefire" class="accordion-item glass-panel rounded-xl overflow-hidden search-item transition-all duration-300">
                     <button class="accordion-header w-full flex items-center justify-between p-4 hover:bg-white/5 transition-colors text-left click-sfx" aria-expanded="false">
                         <div class="flex items-center gap-4">
-                            <i class="fas fa-crosshairs text-xl w-6 text-center text-gray-400"></i>
-                            <span class="font-semibold item-title">Hacks Freefire (Root Magisk)</span>
+                            <div class="w-10 h-10 rounded-lg bg-gray-800 flex items-center justify-center text-gray-300 border border-gray-600 text-lg">
+                                <i class="fas fa-crosshairs"></i>
+                            </div>
+                            <span class="font-semibold text-lg item-title">Hacks Freefire (Root Magisk)</span>
                         </div>
                         <i class="fas fa-chevron-down transform transition-transform duration-300 text-slate-500"></i>
                     </button>
                     <div class="accordion-content max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
-                        <div class="p-5 border-t border-slate-700 bg-slate-900/30">
-                            <a href="https://cutyion.com/FreefireH" target="_blank" class="link-hover dl-link click-sfx">Descargar Hacks</a>
+                        <div class="p-5 border-t border-slate-700 bg-slate-900/30 flex flex-col gap-3">
+                            <a href="https://cutyion.com/FreefireH" target="_blank" class="link-hover dl-link click-sfx"><i class="fas fa-download mr-2 text-cyan-400"></i> Descargar Hacks</a>
                         </div>
                     </div>
                 </div>
@@ -728,10 +794,10 @@
                     </button>
                     <div class="accordion-content max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
                         <div class="p-4 grid gap-2 text-sm text-left">
-                            <a href="https://cutyion.com/Win10Win" target="_blank" class="block p-2 rounded hover:bg-slate-600 dl-link click-sfx"><i class="fas fa-compact-disc mr-2"></i> Win 10 Rev14 +FPS</a>
-                            <a href="https://cutyion.com/Win10LT" target="_blank" class="block p-2 rounded hover:bg-slate-600 dl-link click-sfx"><i class="fas fa-compact-disc mr-2"></i> Win 10 LTSC +FPS</a>
-                            <a href="https://cutyion.com/Win11WinterO" target="_blank" class="block p-2 rounded hover:bg-slate-600 dl-link click-sfx"><i class="fas fa-compact-disc mr-2"></i> Win 11 Rev14 +FPS</a>
-                            <a href="https://cutyion.com/Win11LTS" target="_blank" class="block p-2 rounded hover:bg-slate-600 dl-link click-sfx"><i class="fas fa-compact-disc mr-2"></i> Win 11 LTSC +FPS</a>
+                            <a href="https://cutyion.com/Win10Win" target="_blank" class="block p-2 rounded hover:bg-slate-600 dl-link click-sfx"><i class="fas fa-compact-disc mr-2 text-cyan-400"></i> Win 10 Rev14 +FPS</a>
+                            <a href="https://cutyion.com/Win10LT" target="_blank" class="block p-2 rounded hover:bg-slate-600 dl-link click-sfx"><i class="fas fa-compact-disc mr-2 text-cyan-400"></i> Win 10 LTSC +FPS</a>
+                            <a href="https://cutyion.com/Win11WinterO" target="_blank" class="block p-2 rounded hover:bg-slate-600 dl-link click-sfx"><i class="fas fa-compact-disc mr-2 text-cyan-400"></i> Win 11 Rev14 +FPS</a>
+                            <a href="https://cutyion.com/Win11LTS" target="_blank" class="block p-2 rounded hover:bg-slate-600 dl-link click-sfx"><i class="fas fa-compact-disc mr-2 text-cyan-400"></i> Win 11 LTSC +FPS</a>
                         </div>
                     </div>
                 </div>
@@ -836,6 +902,7 @@
 
     <!-- MODALS (Video, PayPal, Nequi, About, Shortener) -->
     
+    <!-- Shortener Link Modal -->
     <div id="shortenerModal" role="dialog" aria-modal="true" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/90 backdrop-blur-md p-4 transition-opacity">
         <div class="relative w-full max-w-lg animate-pop-in">
             <div class="glass-panel p-6 rounded-2xl relative shadow-2xl border-t-4 border-yellow-500 flex flex-col items-center">
@@ -872,6 +939,7 @@
         </div>
     </div>
 
+    <!-- Video Explainer Modal -->
     <div id="videoModal" role="dialog" aria-modal="true" class="fixed inset-0 z-[110] hidden items-center justify-center bg-black/80 backdrop-blur-sm p-4 transition-opacity">
         <div class="glass-panel w-full max-w-4xl rounded-2xl relative overflow-hidden shadow-2xl animate-blob" style="animation: none;">
             <button onclick="closeModal('videoModal')" class="absolute top-2 right-4 text-white hover:text-red-400 text-3xl z-10 font-bold click-sfx">&times;</button>
@@ -881,6 +949,7 @@
         </div>
     </div>
 
+    <!-- Donation Modals -->
     <div id="paypalModal" role="dialog" aria-modal="true" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/80 backdrop-blur-sm p-4">
         <div class="relative w-full max-w-sm animate-pop-in">
             <div class="bg-white text-slate-900 p-6 rounded-2xl relative shadow-2xl snake-border-container">
@@ -1129,7 +1198,7 @@
             else {
                 if(['minecraft','fortnite','wd2','dragonball','pes2017','rocketleague','cod','gtav'].includes(id)) {
                     filterCategory('pc', document.querySelectorAll('.filter-btn')[1]);
-                } else if(['freefire','res-android','wifi-tool','bat-android','samsung-opti'].includes(id)) {
+                } else if(['candado-claro','freefire','res-android','wifi-tool','bat-android','samsung-opti'].includes(id)) {
                     filterCategory('android', document.querySelectorAll('.filter-btn')[2]);
                 } else if(['winteros'].includes(id)) {
                     filterCategory('system', document.querySelectorAll('.filter-btn')[3]);
@@ -1324,6 +1393,7 @@
         }
         updateOnlineUsers();
 
+        // --- SHORTENER MODAL LOGIC ---
         let currentDownloadUrl = "";
 
         document.addEventListener('DOMContentLoaded', () => {
@@ -1403,7 +1473,7 @@
             if(!modal) return;
             modal.classList.remove('hidden'); modal.classList.add('flex');
             modal.setAttribute('aria-modal', 'true');
-            if (id !== 'aboutModal' && id !== 'paypalModal' && id !== 'nequiModal') {
+            if (id !== 'aboutModal' && id !== 'paypalModal' && id !== 'nequiModal' && id !== 'shortenerModal') {
                 setTimeout(() => { modal.firstElementChild.style.transform = 'scale(1)'; modal.firstElementChild.style.opacity = '1'; }, 10);
             }
         }
